@@ -26,10 +26,29 @@ Itt megtekintheti az adott helyről készült képeket, mások értékelését �
 
 ![](kommentek.png)
 
+Ha a felhasználó a menüből a Recommended For You opciót választja, felsorolás szerűen megjelennek a hozzá közel eső helyek, azok értékelései és képei:
+
+![](nekedajanlott.png)
+
+Itt a Details gombra kattintva ugyancsak arra az oldalra kerülünk, amelyiken megtekinthetjük az adott helyről készült képeket, mások értékeléseit és kommentjeit.
+
+Ha a menüből a Track Others opciót választjuk, egy térképen láthatjuk a hozzánk közel lévő felhasználókat:
+
+![](masokkovetese.png)
+
 Ha a felhasználó a menüből az Upload New Place opciót választja megjelenik a következő képernyő:
 
 ![](ujhelyfeltoltes.png)
 
 Itt fel lehet tölteni egy helyről képet és szöveges értékelést, véleményt. 
+
+A menüből a Request Help opciót választva a felhasználónak lehetősége van segítséget kérni a közelben lévő többi felhasználótól, ehhez csak a képernyő közepén lévő nagy gombot kell megnyomnia:
+
+![](segitsegkeres.png)
+
+Ha valaki a közelünkben segítséget kért, akkor kapunk erről egy értesítést, valamint ez a térképen következőképpen jelenik meg:
+
+![](helpalert.png)
+
 
 A felhasználónak minden esetben lehetősége van visszatérni a főképernyőre, megnyomva a bal felső sarokban lévő térkép gombot, valamint a menüre, megnyomva a jobb felső sarokban lévő gombot. 
