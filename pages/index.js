@@ -14,7 +14,7 @@ export default function Home() {
   }, []);
 
   const callServer = async () => {
-    const response = await fetch('http://localhost:3000/api/hello');
+    const response = await fetch('/api/hello');
     const data = await response.json();
     setHello(data.name);
   }
