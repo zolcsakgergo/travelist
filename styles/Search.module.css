@@ -1,0 +1,41 @@
+.layout {
+    display: flex;
+    height: 86vh;
+}
+
+.searchContainer {
+    width: 20vw;
+    background-color: darkgray;
+    height: 86vh;
+    overflow-y: scroll;
+}
+
+.mapContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.searchItem {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.searchItem:nth-child(odd) {
+    background-color: grey;
+}
+
+.searchItem:nth-child(even) {
+    background-color: rgb(94, 94, 94);
+}
+
+.searchItem:hover {
+    background-color: rgb(49, 49, 49);
+}
+
+.selectedPlace {
+    background-color: rgb(49, 49, 49) !important;
+}

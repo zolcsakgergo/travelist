@@ -1,0 +1,21 @@
+.layout {
+    display: flex;
+}
+
+.imagesContainer {
+    padding: 2rem;
+    flex: 1;
+}
+
+.reviewContainer {
+    padding: 2rem;
+    flex: 1;
+}
+
+.description {
+    padding: 2rem 0;
+}
+
+.reviewButton {
+    padding: 0.4rem 0.8rem;
+}
