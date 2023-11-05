@@ -1,5 +1,5 @@
 import User from "../../utils/models/User";
-import connectMongo from "../mongodb";
+import connectMongo from "../../utils/db/mongodb";
 import bcrypt from "bcrypt";
 import { redirect } from 'next/navigation'
 const saltRounds = 10;
