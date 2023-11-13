@@ -1,40 +1,25 @@
 import { Inter } from 'next/font/google'
 import styles from '../styles/Search.module.css'
 import { useState } from "react"
-import { useRouter } from "next/router"
+import { places } from '../utils/constants/places'
+import Map from '../components/Map'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const places = [
-    "Budapest",
-    "Szeged",
-    "Pecs",
-    "Esztergom",
-    "Gyor",
-    "Debrecen",
-    "Tatabanya",
-    "Nyiregyhaza"
-]
 
 const SearchPage = () => {
-    const [selectedPlace, setSelectedPlace] = useState('')
-    const router = useRouter()
-
-    const handlePlaceClick = () => {
-        if (!selectedPlace) return;
-        router.push(`/places/${selectedPlace}`)
-    }
+    const [selectedPlace, setSelectedPlace] = useState('Budapest')
 
     return (
         <div className={inter.className}>
             <div className={styles.layout}>
                 <div className={styles.searchContainer}>
-                    {places.map((place, index) => (
+                    {Object.keys(places).map((place, index) => (
                         <div key={index} onClick={() => setSelectedPlace(place)} className={`${selectedPlace === place ? styles.selectedPlace : ''} ${styles.searchItem}`}>{place}</div>
                     ))}
                 </div>
                 <div className={styles.mapContainer}>
-                    <h1 onClick={handlePlaceClick}>Map here: {selectedPlace}</h1>
+                        <Map selectedPlace={selectedPlace}/>
                 </div>
             </div>
         </div>

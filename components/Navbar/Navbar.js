@@ -9,14 +9,14 @@ const Navbar = () => {
     return (
         <div className={`${styles.container} ${inter.className}`} >
             <Link href = "/">
-                <Image alt='logo image' src='/logo.png' width={120} height={120} />
+                <Image alt='logo image' src='/logo.png' priority width={120} height={120} />
             </Link>
             <div className={styles.links}>
                 <Link href={'/search'}>Search</Link>
                 <Link href={'/about'}>Recomended for you</Link>
-                <Link href={'/projects'}>Track others</Link>
-                <Link href={'/contact'}>Upload new place</Link>
-                <Link href={'/contact'}>Request help</Link>
+                <Link href={'/track'}>Track others</Link>
+                <Link href={'/upload'}>Upload new place</Link>
+                <Link href={'/request-help'}>Request help</Link>
                 <Link href={'/registration'}> Sign Up</Link>
                 <Link href={'/login'}>Login</Link>
             </div>

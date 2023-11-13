@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.19.2",
     "bcrypt": "^5.1.1",
     "mongoose": "^8.0.0",
     "next": "latest",
