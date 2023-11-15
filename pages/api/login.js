@@ -1,6 +1,7 @@
 import User from "../../utils/models/User";
 import connectMongo from "../../utils/db/mongodb";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 await connectMongo();
 
@@ -17,6 +18,10 @@ export default async function handler(req, res) {
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
     if (!isPasswordCorrect) return res.status(400).json({ message: "Invalid credentials" });
+    
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '5d' });
+
+    res.setHeader("Set-Cookie", `token=${token}; path=/; HttpOnly}`);
 
     return res.status(200).json({});
   }
