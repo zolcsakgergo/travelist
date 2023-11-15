@@ -17,8 +17,8 @@ const Map = ({ selectedPlace }) => {
         height: '100%',
     };
     
-    const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
+        const { isLoaded, loadError } = useLoadScript({
+        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
         libraries,
     });
 
