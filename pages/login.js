@@ -15,7 +15,13 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('/api/login', { method: "POST", body: JSON.stringify({ email, password }) });
+    const response = await fetch('/api/login', {
+      method: "POST",
+      headers: {
+      "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password })
+    });
     if (response.status === 200) router.push('/');
     if (response.status === 400) {
       res.status(400).json({ error: 'Invalid credentials' });
