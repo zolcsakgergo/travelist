@@ -3,6 +3,8 @@ import styles from '../styles/Registration.module.css';
 import { useRouter } from 'next/router';
 import { useAuth } from '../hooks/Auth';
 
+
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,8 +17,15 @@ const Login = () => {
 
     const response = await fetch('/api/login', { method: "POST", body: JSON.stringify({ email, password }) });
     if (response.status === 200) router.push('/');
-    if (response.status === 400) setError('Invalid credentials');
+    if (response.status === 400) {
+      res.status(400).json({ error: 'Invalid credentials' });
+    }
+    const responseData = await response.json().catch(() => null);
+      if (response.status === 400 && responseData && responseData.error) {
+      setError(responseData.error);
+    }
 
+    
     setEmail('');
     setPassword('');
    

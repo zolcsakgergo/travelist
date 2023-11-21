@@ -1,5 +1,7 @@
 import jwt from "jsonwebtoken";
 
+
+
 export const verifyTokenCookie = () => {
     const token = getCookie('token');
     return jwt.decode(token, { complete: true });
