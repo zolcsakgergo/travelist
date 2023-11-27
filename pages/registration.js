@@ -19,9 +19,11 @@ const Register = () => {
       body: JSON.stringify({ email, password })
     });
 
-    if (response.status === 200) router.push('/login');
-  };
-    if (response.status === 400) setError('Invalid credentials');
+    if (response.status === 200) {
+      router.push('/login');
+    } else if (response.status === 400) {
+      setError('Invalid credentials');
+    }
 
     setEmail('');
     setPassword('');
