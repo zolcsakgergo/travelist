@@ -8,7 +8,12 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('/api/registration', { method: "POST", body: JSON.stringify({ email, password }) });
+    const response = await fetch('/api/registration', {
+      method: "POST", headers: {
+      "Content-Type": "application/json",
+    },
+      body: JSON.stringify({ email, password })
+    });
     if (response.status === 200) router.push('/login');
     if (response.status === 400) setError('Invalid credentials');
 
