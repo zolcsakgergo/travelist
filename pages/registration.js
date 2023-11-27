@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import styles from '../styles/Registration.module.css';
 import { useRouter } from 'next/router';
+
+
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const router = useRouter();
 
   const handleRegister = async (e) => {
     e.preventDefault();
-
-    const router = useRouter();
 
     const response = await fetch('/api/registration', {
       method: "POST",
