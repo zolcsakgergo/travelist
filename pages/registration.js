@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from '../styles/Registration.module.css';
+import { useRouter } from 'next/router';
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -8,13 +9,18 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
+    const router = useRouter();
+
     const response = await fetch('/api/registration', {
-      method: "POST", headers: {
-      "Content-Type": "application/json",
-    },
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ email, password })
     });
+
     if (response.status === 200) router.push('/login');
+  };
     if (response.status === 400) setError('Invalid credentials');
 
     setEmail('');
