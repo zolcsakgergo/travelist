@@ -7,7 +7,7 @@ await connectMongo();
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const parsedBody = JSON.parse(req.body)
+    const parsedBody = req.body;
     const { email, password } = parsedBody;
 
     const salt = await bcrypt.genSalt(saltRounds);
