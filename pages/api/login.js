@@ -19,9 +19,9 @@ export default async function handler(req, res) {
 
     if (!isPasswordCorrect) return res.status(400).json({ message: "Invalid credentials" });
     
-    //const token = jwt.sign({ id: user._id }, process.env.NEXT_PUBLIC_JWT_SECRET, { expiresIn: '5d' });
+    const token = jwt.sign({ id: user._id }, process.env.NEXT_PUBLIC_JWT_SECRET, { expiresIn: '5d' });
 
-    //res.setHeader("Set-Cookie", `token=${token}; path=/; HttpOnly}`);
+    res.setHeader("Set-Cookie", `token=${token}; path=/; HttpOnly}`);
 
     return res.status(200).json({});
   }
