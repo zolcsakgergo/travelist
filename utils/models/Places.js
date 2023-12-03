@@ -1,14 +1,14 @@
 import { Schema, model, models } from 'mongoose';
 
 const placeSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  location: {
-    type: String,
-    required: true,
-    unique: true
+    name: {
+        type: String,
+        required: true,
+    },
+    location: {
+        type: String,
+        required: true,
+        unique: true
     },
     description: {
         type: String,

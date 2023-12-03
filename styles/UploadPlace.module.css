@@ -1,0 +1,20 @@
+.layout {
+    display: flex;
+    height: 86vh;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.infosContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 35vw;
+    padding: 2rem;
+}
+
+.infoContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}

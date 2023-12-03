@@ -17,7 +17,7 @@ const Map = ({ selectedPlace }) => {
         height: '100%',
     };
     
-        const { isLoaded, loadError } = useLoadScript({
+    const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
         libraries,
     });
@@ -35,6 +35,7 @@ const Map = ({ selectedPlace }) => {
             mapContainerStyle={mapContainerStyle}
             zoom={10}
             center={places[selectedPlace]}
+            onClick={(e) => getPlaceData(e.latLng.lat(), e.latLng.lng())}
         >
             <Marker position={places[selectedPlace]} onClick={handlePlaceClick} />
             <Circle

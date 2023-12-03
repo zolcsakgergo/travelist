@@ -15,7 +15,7 @@ const Navbar = () => {
                 <Link href={'/search'}>Search</Link>
                 <Link href={'/about'}>Recomended for you</Link>
                 <Link href={'/track'}>Track others</Link>
-                <Link href={'/upload'}>Upload new place</Link>
+                <Link href={'/places/upload'}>Upload new place</Link>
                 <Link href={'/request-help'}>Request help</Link>
                 <Link href={'/registration'}> Sign Up</Link>
                 <Link href={'/login'}>Login</Link>
