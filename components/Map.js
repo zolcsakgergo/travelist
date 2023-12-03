@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 const libraries = ['places'];
 
-const Map = ({ selectedPlace }) => {
+const Map = ({ selectedPlace, allPlaces }) => {
     const router = useRouter();
 
     const handlePlaceClick = () => {
@@ -38,6 +38,7 @@ const Map = ({ selectedPlace }) => {
             onClick={(e) => getPlaceData(e.latLng.lat(), e.latLng.lng())}
         >
             <Marker position={places[selectedPlace]} onClick={handlePlaceClick} />
+            {allPlaces.map((place, index) => <Marker key={index} icon={"http://maps.google.com/mapfiles/ms/icons/green.png"} position={{ lat: Number( place.latitude), lng: Number(place.longitude) }} />)}
             <Circle
                 key="id"
                 center={places[selectedPlace]}

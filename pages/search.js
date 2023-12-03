@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google'
 import styles from '../styles/Search.module.css'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { places } from '../utils/constants/places'
 import Map from '../components/Map'
 
@@ -8,7 +8,18 @@ const inter = Inter({ subsets: ['latin'] })
 
 
 const SearchPage = () => {
-    const [selectedPlace, setSelectedPlace] = useState('Budapest')
+    const [selectedPlace, setSelectedPlace] = useState('Budapest');
+    const [allPlaces, setAllPlaces] = useState([]);
+
+    const getAllPlaces = async () => {
+        const response = await fetch('/api/places');
+        const data = await response.json();
+        setAllPlaces(data.places);
+    }
+
+    useEffect(() => { 
+        getAllPlaces();
+    }, []);
 
     return (
         <div className={inter.className}>
@@ -19,7 +30,7 @@ const SearchPage = () => {
                     ))}
                 </div>
                 <div className={styles.mapContainer}>
-                        <Map selectedPlace={selectedPlace}/>
+                        <Map selectedPlace={selectedPlace} allPlaces={allPlaces}/>
                 </div>
             </div>
         </div>

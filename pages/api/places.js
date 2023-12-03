@@ -4,6 +4,15 @@ import connectMongo from "../../utils/db/mongodb";
 await connectMongo();
 
 export default async function handler(req, res) {
+  if (req.method === 'GET') {
+    const placeId = req.query.id;
+
+    if (!placeId) {
+      const places = await Place.find({});
+      return res.status(200).json({ places });
+    }
+  }
+
   if (req.method === 'POST') {
       const { name, location, description, latitude, longitude, rating } = req.body;
       
