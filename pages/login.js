@@ -8,9 +8,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const router = useRouter();
-  const auth = useAuth(); // Get the auth object from useAuth hook
-  const { user, logout } = auth || {};
-
+  const { user, logout } = useAuth(); // Get the auth object from useAuth hook
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -53,32 +51,33 @@ const Login = () => {
 
   return (
     <div className={styles['register-container']}>
-      {!user ? (
-        <div className={styles['register-form']}>
-          <h2>Login</h2>
-          <form onSubmit={handleLogin}>
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button type="submit">Login</button>
-          </form>
-        </div>
-      ) : (
-        <div>
-          <div>You are already logged in</div>
+      <div className={styles['register-form']}>
+        <h2>Login</h2>
+        <form onSubmit={handleLogin}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit">Login</button>
+        </form>
+      </div>
+
+      {user ? (
+        <div className={styles['logged-in-container']}>
+          <div>You are already logged in as {user}</div>
           <button onClick={handleLogout}>Log Out</button>
         </div>
+      ) : (
+        <div>Not logged in</div>
       )}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   );
 };
