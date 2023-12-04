@@ -1,15 +1,14 @@
-import { GoogleMap, useLoadScript, Marker, Circle } from '@react-google-maps/api';
-import { places } from '../utils/constants/places';
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import { useRouter } from 'next/router';
 
 const libraries = ['places'];
 
-const Map = ({ selectedPlace, allPlaces }) => {
+const Map = ({ selectedLocation, allPlaces }) => {
     const router = useRouter();
 
-    const handlePlaceClick = () => {
-        if (!selectedPlace) return;
-        router.push(`/places/${selectedPlace.toLowerCase()}`)
+    const handlePlaceClick = (place) => {
+        if (!place) return;
+        router.push(`/places/${place._id}`)
     }
 
     const mapContainerStyle = {
@@ -34,24 +33,19 @@ const Map = ({ selectedPlace, allPlaces }) => {
         <GoogleMap
             mapContainerStyle={mapContainerStyle}
             zoom={10}
-            center={places[selectedPlace]}
+            center={{
+                lat: Number(selectedLocation.latitude),
+                lng: Number(selectedLocation.longitude)
+            }}
             onClick={(e) => getPlaceData(e.latLng.lat(), e.latLng.lng())}
         >
-            <Marker position={places[selectedPlace]} onClick={handlePlaceClick} />
-            {allPlaces.map((place, index) => <Marker key={index} icon={"http://maps.google.com/mapfiles/ms/icons/green.png"} position={{ lat: Number( place.latitude), lng: Number(place.longitude) }} />)}
-            <Circle
-                key="id"
-                center={places[selectedPlace]}
-                radius={5000}
-                options={{
-                    strokeColor: "#66009a",
-                    strokeOpacity: 0.8,
-                    strokeWeight: 2,
-                    fillColor: `#66009a`,
-                    fillOpacity: 0.35,
-                    zIndex: 1
-                }}
-            />
+            {allPlaces.map((place, index) =>
+                <Marker
+                    key={index}
+                    onClick={() => handlePlaceClick(place)}
+                    icon={"http://maps.google.com/mapfiles/ms/icons/green.png"}
+                    position={{ lat: Number(place.latitude), lng: Number(place.longitude) }}
+                />)}
         </GoogleMap>
     )
 }

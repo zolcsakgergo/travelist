@@ -11,6 +11,9 @@ export default async function handler(req, res) {
       const places = await Place.find({});
       return res.status(200).json({ places });
     }
+
+    const place = await Place.findById(placeId);
+    return res.status(200).json({ place });
   }
 
   if (req.method === 'POST') {
