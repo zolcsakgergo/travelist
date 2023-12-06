@@ -1,4 +1,4 @@
-import { Schema, model, models } from 'mongoose';
+import { Schema, model, models } from "mongoose";
 
 const placeSchema = new Schema({
     name: {
@@ -8,7 +8,7 @@ const placeSchema = new Schema({
     location: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     description: {
         type: String,
@@ -25,9 +25,9 @@ const placeSchema = new Schema({
     longitude: {
         type: String,
         required: true,
-    }
+    },
 });
 
-const Place = models.Place || model('Place', placeSchema);
+const Place = models.Place || model("Place", placeSchema);
 
 export default Place;

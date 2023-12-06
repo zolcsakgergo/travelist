@@ -10,9 +10,6 @@ export const useAuth = () => {
   }, []);
 
   const logout = () => {
-    // Clear the authentication-related data (e.g., token, session)
-    // Example: remove token from cookies, clear session storage, etc.
-    // Then update the user state to null
     setUser(null);
   };
 
