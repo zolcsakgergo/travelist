@@ -9,6 +9,7 @@ await connectMongo();
 
 const getNewMessage = (previousMessage, newMessage) => {
     console.log("##", previousMessage, newMessage);
+    if (previousMessage && newMessage) return newMessage;
     if (newMessage === SOLVED) return "";
     if (!previousMessage) return newMessage;
     if (newMessage === "") return previousMessage;
@@ -16,6 +17,10 @@ const getNewMessage = (previousMessage, newMessage) => {
 };
 
 export default async function handler(req, res) {
+    if (req.method === "GET") {
+        const requestHelps = await RequestHelp.find({});
+        return res.status(200).json({ requestHelps });
+    }
     if (req.method === "POST") {
         const { token, longitude, latitude, message } = req.body;
 
