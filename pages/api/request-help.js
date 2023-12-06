@@ -9,7 +9,8 @@ await connectMongo();
 
 const getNewMessage = (previousMessage, newMessage) => {
     console.log("##", previousMessage, newMessage);
-    if (previousMessage && newMessage) return newMessage;
+    if (previousMessage && newMessage && newMessage !== SOLVED)
+        return newMessage;
     if (newMessage === SOLVED) return "";
     if (!previousMessage) return newMessage;
     if (newMessage === "") return previousMessage;
