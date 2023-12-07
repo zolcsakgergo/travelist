@@ -8,7 +8,6 @@ const placeSchema = new Schema({
     location: {
         type: String,
         required: true,
-        unique: false,
     },
     description: {
         type: String,
