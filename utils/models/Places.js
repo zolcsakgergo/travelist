@@ -26,6 +26,10 @@ const placeSchema = new Schema({
         type: String,
         required: true,
     },
+    image: {
+        type: String,
+        required: false,
+    },
 });
 
 const Place = models.Place || model("Place", placeSchema);

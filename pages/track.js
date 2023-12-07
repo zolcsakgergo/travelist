@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 const libraries = ["places"];
 
 const TrackPage = () => {
+    const [selectedRequestHelp, setSelectedRequestHelp] = useState();
     const [requestHelps, setRequestHelps] = useState([]);
 
     const getRequestHelps = async () => {
@@ -50,6 +51,7 @@ const TrackPage = () => {
                 >
                     {requestHelps.map((requestHelp) => (
                         <Marker
+                            onClick={() => setSelectedRequestHelp(requestHelp)}
                             icon={`http://maps.google.com/mapfiles/ms/icons/${
                                 requestHelp.message ? "red" : "yellow"
                             }.png`}
@@ -61,6 +63,12 @@ const TrackPage = () => {
                         />
                     ))}
                 </GoogleMap>
+                {selectedRequestHelp && (
+                    <div>
+                        <div>{selectedRequestHelp.username}</div>
+                        <div>{selectedRequestHelp.message}</div>
+                    </div>
+                )}
             </div>
         </div>
     );

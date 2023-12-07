@@ -20,7 +20,21 @@ const getNewMessage = (previousMessage, newMessage) => {
 export default async function handler(req, res) {
     if (req.method === "GET") {
         const requestHelps = await RequestHelp.find({});
-        return res.status(200).json({ requestHelps });
+
+        const users = await Promise.all(
+            requestHelps.map((requestHelp) =>
+                User.findById(requestHelp.userId),
+            ),
+        );
+
+        const populatedRequestHelps = requestHelps.map(
+            (requestHelp, index) => ({
+                ...requestHelp.toObject(),
+                username: users[index]?.username ? users[index].username : "",
+            }),
+        );
+
+        return res.status(200).json({ requestHelps: populatedRequestHelps });
     }
     if (req.method === "POST") {
         const { token, longitude, latitude, message } = req.body;

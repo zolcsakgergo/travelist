@@ -19,9 +19,15 @@ export default async function handler(req, res) {
     }
 
     if (req.method === "POST") {
-        const { name, location, description, latitude, longitude, rating } =
-            req.body;
-
+        const {
+            name,
+            location,
+            description,
+            latitude,
+            longitude,
+            rating,
+            imageByteArray,
+        } = req.body;
         console.log(req.body);
 
         if (
